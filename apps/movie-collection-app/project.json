@@ -1,0 +1,92 @@
+{
+  "projectType": "application",
+  "sourceRoot": "apps/movie-collection-app/src",
+  "prefix": "movie-collection",
+  "targets": {
+    "build": {
+      "executor": "@angular-devkit/build-angular:browser",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/movie-collection-app",
+        "index": "apps/movie-collection-app/src/index.html",
+        "main": "apps/movie-collection-app/src/main.ts",
+        "polyfills": "apps/movie-collection-app/src/polyfills.ts",
+        "tsConfig": "apps/movie-collection-app/tsconfig.app.json",
+        "assets": [
+          "apps/movie-collection-app/src/favicon.ico",
+          "apps/movie-collection-app/src/assets"
+        ],
+        "styles": ["apps/movie-collection-app/src/styles.css"],
+        "scripts": []
+      },
+      "configurations": {
+        "production": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "500kb",
+              "maximumError": "1mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "2kb",
+              "maximumError": "4kb"
+            }
+          ],
+          "fileReplacements": [
+            {
+              "replace": "apps/movie-collection-app/src/environments/environment.ts",
+              "with": "apps/movie-collection-app/src/environments/environment.prod.ts"
+            }
+          ],
+          "outputHashing": "all"
+        },
+        "development": {
+          "buildOptimizer": false,
+          "optimization": false,
+          "vendorChunk": true,
+          "extractLicenses": false,
+          "sourceMap": true,
+          "namedChunks": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "executor": "@angular-devkit/build-angular:dev-server",
+      "configurations": {
+        "production": {
+          "browserTarget": "movie-collection-app:build:production"
+        },
+        "development": {
+          "browserTarget": "movie-collection-app:build:development"
+        }
+      },
+      "defaultConfiguration": "development"
+    },
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "browserTarget": "movie-collection-app:build"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "apps/movie-collection-app/**/*.ts",
+          "apps/movie-collection-app/**/*.html"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/movie-collection-app"],
+      "options": {
+        "jestConfig": "apps/movie-collection-app/jest.config.ts",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}
