@@ -5,7 +5,9 @@
   "targets": {
     "build": {
       "executor": "@nrwl/angular:ng-packagr-lite",
-      "outputs": ["dist/libs/auth"],
+      "outputs": [
+        "dist/libs/auth"
+      ],
       "options": {
         "project": "libs/auth/ng-package.json",
         "tailwindConfig": "libs/auth/tailwind.config.js"
@@ -22,7 +24,9 @@
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/libs/auth"],
+      "outputs": [
+        "coverage/libs/auth"
+      ],
       "options": {
         "jestConfig": "libs/auth/jest.config.ts",
         "passWithNoTests": true
@@ -31,7 +35,10 @@
     "lint": {
       "executor": "@nrwl/linter:eslint",
       "options": {
-        "lintFilePatterns": ["libs/auth/**/*.ts", "libs/auth/**/*.html"]
+        "lintFilePatterns": [
+          "libs/auth/**/*.ts",
+          "libs/auth/**/*.html"
+        ]
       }
     }
   },

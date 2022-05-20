@@ -5,7 +5,9 @@
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:browser",
-      "outputs": ["{options.outputPath}"],
+      "outputs": [
+        "{options.outputPath}"
+      ],
       "options": {
         "outputPath": "dist/apps/movie-collection-app",
         "index": "apps/movie-collection-app/src/index.html",
@@ -16,7 +18,10 @@
           "apps/movie-collection-app/src/favicon.ico",
           "apps/movie-collection-app/src/assets"
         ],
-        "styles": ["apps/movie-collection-app/src/styles.css"],
+        "styles": [
+          "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+          "apps/movie-collection-app/src/styles.css"
+        ],
         "scripts": []
       },
       "configurations": {
@@ -81,7 +86,9 @@
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/apps/movie-collection-app"],
+      "outputs": [
+        "coverage/apps/movie-collection-app"
+      ],
       "options": {
         "jestConfig": "apps/movie-collection-app/jest.config.ts",
         "passWithNoTests": true
