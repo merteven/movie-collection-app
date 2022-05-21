@@ -3,6 +3,7 @@
   "version": 2,
   "projects": {
     "auth": "libs/auth",
+    "core": "libs/core",
     "data-access": "libs/data-access",
     "movie-collection-app": "apps/movie-collection-app"
   }

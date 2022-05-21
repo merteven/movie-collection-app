@@ -4,10 +4,11 @@ import {
   HttpInterceptor,
   HttpRequest,
 } from '@angular/common/http';
-import { Inject } from '@angular/core';
+import { Inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BASE_URL, JWT_TOKEN } from '../injection-tokens';
 
+@Injectable()
 export class AuthHeaderInterceptor implements HttpInterceptor {
   constructor(
     @Inject(BASE_URL) private baseUrl: string,

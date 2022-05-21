@@ -1,7 +1,7 @@
 import { Component, ChangeDetectionStrategy, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { AuthService } from '../../services/auth.service';
+import { AuthService } from '@movie-collection/core';
 
 @Component({
   selector: 'mc-login-page',
