@@ -1,0 +1,29 @@
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+  <div class="flex flex-col">
+    <mat-form-field [appearance]="formAppearance">
+      <mat-label>Username</mat-label>
+      <input
+        matInput
+        [formControlName]="usernameFieldName"
+        [name]="usernameFieldName"
+      />
+      <mat-error *ngIf="loginForm.get(usernameFieldName).invalid">{{
+        usernameFieldErrorText
+      }}</mat-error>
+    </mat-form-field>
+    <mc-password-input
+      [errorText]="passwordFieldErrorText"
+      [showError]="loginForm.get(passwordFieldName).invalid"
+      [name]="passwordFieldName"
+      [formAppearance]="formAppearance"
+    ></mc-password-input>
+    <button
+      mat-stroked-button
+      color="primary"
+      type="submit"
+      [disabled]="loginForm.invalid"
+    >
+      Login<mat-icon>chevron_right</mat-icon>
+    </button>
+  </div>
+</form>

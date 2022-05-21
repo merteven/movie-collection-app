@@ -1,7 +1,7 @@
 {
   "projectType": "library",
   "sourceRoot": "libs/auth/src",
-  "prefix": "movie-collection",
+  "prefix": "mc",
   "targets": {
     "build": {
       "executor": "@nrwl/angular:ng-packagr-lite",
