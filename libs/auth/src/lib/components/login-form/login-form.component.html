@@ -7,13 +7,13 @@
         [formControlName]="usernameFieldName"
         [name]="usernameFieldName"
       />
-      <mat-error *ngIf="loginForm.get(usernameFieldName).invalid">{{
+      <mat-error *ngIf="shouldShowUsernameError">{{
         usernameFieldErrorText
       }}</mat-error>
     </mat-form-field>
     <mc-password-input
       [errorText]="passwordFieldErrorText"
-      [showError]="loginForm.get(passwordFieldName).invalid"
+      [showError]="shouldShowPasswordError"
       [name]="passwordFieldName"
       [formAppearance]="formAppearance"
     ></mc-password-input>

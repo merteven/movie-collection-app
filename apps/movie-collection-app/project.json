@@ -1,7 +1,7 @@
 {
   "projectType": "application",
   "sourceRoot": "apps/movie-collection-app/src",
-  "prefix": "movie-collection",
+  "prefix": "mc",
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:browser",

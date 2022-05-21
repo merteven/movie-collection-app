@@ -27,9 +27,11 @@ export class LoginFormComponent {
 
   usernameFieldName = 'username';
   usernameFieldErrorText = `Username must be at least ${usernameMinLength} and at most ${usernameMaxLength} characters long`;
+  shouldShowUsernameError: boolean = this.loginForm.get(this.usernameFieldName)?.invalid ?? false;
 
   passwordFieldName = 'password';
   passwordFieldErrorText = `Password must be at least ${passwordMinLength} and at most ${passwordMaxLength} characters long`;
+  shouldShowPasswordError: boolean = this.loginForm.get(this.passwordFieldName)?.invalid ?? false;
 
   formAppearance: MatFormFieldAppearance = 'outline'
 
