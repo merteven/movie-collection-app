@@ -16,6 +16,7 @@
     "baseUrl": ".",
     "paths": {
       "@movie-collection/auth": ["libs/auth/src/index.ts"],
+      "@movie-collection/collection": ["libs/collection/src/index.ts"],
       "@movie-collection/core": ["libs/core/src/index.ts"],
       "@movie-collection/data-access": ["libs/data-access/src/index.ts"]
     }
