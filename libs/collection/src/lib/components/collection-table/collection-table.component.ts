@@ -9,8 +9,15 @@ import { PageEvent } from '@angular/material/paginator';
 import { Collection } from '../../models';
 
 @Component({
-  selector: 'movie-collection-collection-table',
+  selector: 'mc-collection-table',
   templateUrl: './collection-table.component.html',
+  styles: [
+    `
+      :host {
+        width: 100%;
+      }
+    `,
+  ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CollectionTableComponent {

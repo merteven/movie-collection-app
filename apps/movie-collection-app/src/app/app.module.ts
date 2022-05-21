@@ -17,6 +17,14 @@ import { HeaderComponent } from './components/header.component';
     MatButtonModule,
     RouterModule.forRoot([
       {
+        path: '',
+        pathMatch: 'full',
+        loadChildren: () =>
+          import('@movie-collection/collection').then(
+            (m) => m.CollectionModule
+          ),
+      },
+      {
         path: 'auth',
         loadChildren: () =>
           import('@movie-collection/auth').then((m) => m.AuthModule),
