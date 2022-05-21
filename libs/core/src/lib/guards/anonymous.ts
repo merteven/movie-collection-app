@@ -8,7 +8,9 @@ import {
 import { AuthService } from '../auth/auth.service';
 import { map, Observable } from 'rxjs';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+})
 export class Anonymous implements CanActivate {
   constructor(private authService: AuthService) {}
 

@@ -1,0 +1,38 @@
+<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+  <div class="flex flex-col gap-3">
+    <mat-form-field [appearance]="formAppearance">
+      <mat-label>Username</mat-label>
+      <input
+        matInput
+        [formControlName]="usernameFieldName"
+        [name]="usernameFieldName"
+      />
+      <mat-error *ngIf="shouldShowUsernameError">{{
+        usernameFieldErrorText
+      }}</mat-error>
+    </mat-form-field>
+    <mc-password-input
+      *ngIf="passwordControl !== null"
+      [control]="passwordControl"
+      [errorText]="passwordFieldErrorText"
+      [name]="passwordFieldName"
+      [formAppearance]="formAppearance"
+    ></mc-password-input>
+    <mc-password-input
+      *ngIf="passwordRepeatControl !== null"
+      [control]="passwordRepeatControl"
+      [errorText]="passwordRepeatFieldErrorText"
+      [name]="passwordRepeatFieldName"
+      [formAppearance]="formAppearance"
+      [label]="passwordRepeatFieldLabel"
+    ></mc-password-input>
+    <button
+      mat-stroked-button
+      color="primary"
+      type="submit"
+      [disabled]="registerForm.invalid"
+    >
+      Register<mat-icon>chevron_right</mat-icon>
+    </button>
+  </div>
+</form>

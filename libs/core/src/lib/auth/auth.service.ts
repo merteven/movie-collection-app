@@ -16,6 +16,14 @@ export class AuthService {
 
   constructor(private authProvider: AuthProvider) {}
 
+  private static isUserValid(parsedUser: Record<string, unknown>) {
+    return (
+      typeof parsedUser?.['username'] === 'string' &&
+      typeof parsedUser?.['role'] === 'string' &&
+      typeof parsedUser?.['jwt'] === 'string'
+    );
+  }
+
   onInit() {
     const maybeUser = localStorage.getItem('user');
     if (maybeUser === null) {
@@ -23,12 +31,10 @@ export class AuthService {
     }
     try {
       const parsedUser = JSON.parse(maybeUser);
-      if (
-        typeof parsedUser?.username === 'string' &&
-        typeof parsedUser?.role === 'string' &&
-        typeof parsedUser?.jwt === 'string'
-      ) {
+      if (AuthService.isUserValid(parsedUser)) {
         this._user.next(parsedUser);
+      } else {
+        localStorage.removeItem('user');
       }
     } catch (e) {
       localStorage.removeItem('user');
@@ -48,19 +54,19 @@ export class AuthService {
   register(username: string, password: string): Observable<User> {
     return this.authProvider
       .register(username, password)
-      .pipe(tap((user) => this._user.next(user)));
+      .pipe(tap((user) => this.setUser(user)));
   }
 
   get user() {
     return this._user.asObservable();
   }
 
-  setUser(user: User | null) {
-    this._user.next(user);
+  private setUser(user: User | null) {
     if (user === null) {
       localStorage.removeItem('user');
     } else {
       localStorage.setItem('user', JSON.stringify(user));
     }
+    this._user.next(user);
   }
 }

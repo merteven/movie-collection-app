@@ -10,6 +10,8 @@ import { Anonymous, CoreModule } from '@movie-collection/core';
 import { LoginFormComponent } from './components/login-form/login-form.component';
 import { PasswordFormFieldComponent } from './components/password-form-field/password-form-field.component';
 import { LoginPageComponent } from './pages/login-page/login.page';
+import { RegisterFormComponent } from './components/register-form/register-form.component';
+import { RegisterPageComponent } from './pages/register/register.page';
 
 @NgModule({
   imports: [
@@ -20,6 +22,12 @@ import { LoginPageComponent } from './pages/login-page/login.page';
         path: 'login',
         pathMatch: 'full',
         component: LoginPageComponent,
+        canActivate: [Anonymous],
+      },
+      {
+        path: 'register',
+        pathMatch: 'full',
+        component: RegisterPageComponent,
         canActivate: [Anonymous],
       },
     ]),
@@ -33,6 +41,8 @@ import { LoginPageComponent } from './pages/login-page/login.page';
     LoginFormComponent,
     PasswordFormFieldComponent,
     LoginPageComponent,
+    RegisterFormComponent,
+    RegisterPageComponent,
   ],
 })
 export class AuthModule {}
