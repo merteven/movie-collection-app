@@ -15,7 +15,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@movie-collection/auth": ["libs/auth/src/index.ts"]
+      "@movie-collection/auth": ["libs/auth/src/index.ts"],
+      "@movie-collection/data-access": ["libs/data-access/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
