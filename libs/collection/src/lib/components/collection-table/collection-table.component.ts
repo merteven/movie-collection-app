@@ -1,12 +1,21 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import {
+  Component,
+  ChangeDetectionStrategy,
+  Input,
+  Output,
+  EventEmitter,
+} from '@angular/core';
+import { PageEvent } from '@angular/material/paginator';
+import { Collection } from '../../models';
 
 @Component({
   selector: 'movie-collection-collection-table',
   templateUrl: './collection-table.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class CollectionTableComponent implements OnInit {
-  constructor() {}
+export class CollectionTableComponent {
+  @Input() collections: Collection[] = [];
+  @Output() pageChanged = new EventEmitter<PageEvent>();
 
-  ngOnInit(): void {}
+  readonly displayedColumns: string[] = ['id', 'name', 'username'];
 }
