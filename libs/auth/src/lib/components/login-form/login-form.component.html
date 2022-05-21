@@ -1,5 +1,5 @@
 <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-  <div class="flex flex-col">
+  <div class="flex flex-col gap-3">
     <mat-form-field [appearance]="formAppearance">
       <mat-label>Username</mat-label>
       <input
@@ -11,9 +11,9 @@
         usernameFieldErrorText
       }}</mat-error>
     </mat-form-field>
-    <mc-password-input
+    <mc-password-input *ngIf="passwordControl !== null"
+      [control]="passwordControl"
       [errorText]="passwordFieldErrorText"
-      [showError]="shouldShowPasswordError"
       [name]="passwordFieldName"
       [formAppearance]="formAppearance"
     ></mc-password-input>

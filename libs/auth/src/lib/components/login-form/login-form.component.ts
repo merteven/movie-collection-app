@@ -1,6 +1,6 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { MatFormFieldAppearance } from '@angular/material/form-field'
+import { MatFormFieldAppearance } from '@angular/material/form-field';
 
 const usernameMinLength = 3;
 const usernameMaxLength = 32;
@@ -14,28 +14,39 @@ const passwordMaxLength = 32;
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LoginFormComponent {
-  loginForm = new FormGroup({
-    username: new FormControl('', [
-      Validators.minLength(usernameMinLength),
-      Validators.maxLength(usernameMaxLength),
-    ]),
-    password: new FormControl('', [
-      Validators.minLength(passwordMinLength),
-      Validators.maxLength(passwordMaxLength),
-    ]),
-  });
+  loginForm = new FormGroup(
+    {
+      username: new FormControl('', [
+        Validators.required,
+        Validators.minLength(usernameMinLength),
+        Validators.maxLength(usernameMaxLength),
+      ]),
+      password: new FormControl('', [
+        Validators.required,
+        Validators.minLength(passwordMinLength),
+        Validators.maxLength(passwordMaxLength),
+      ]),
+    },
+    { updateOn: 'change' }
+  );
 
   usernameFieldName = 'username';
   usernameFieldErrorText = `Username must be at least ${usernameMinLength} and at most ${usernameMaxLength} characters long`;
-  shouldShowUsernameError: boolean = this.loginForm.get(this.usernameFieldName)?.invalid ?? false;
+
+  get shouldShowUsernameError(): boolean {
+    return this.loginForm.get(this.usernameFieldName)?.invalid ?? false;
+  }
 
   passwordFieldName = 'password';
   passwordFieldErrorText = `Password must be at least ${passwordMinLength} and at most ${passwordMaxLength} characters long`;
-  shouldShowPasswordError: boolean = this.loginForm.get(this.passwordFieldName)?.invalid ?? false;
 
-  formAppearance: MatFormFieldAppearance = 'outline'
+  get passwordControl(): FormControl | null {
+    return this.loginForm.get(this.passwordFieldName) as FormControl;
+  }
+
+  formAppearance: MatFormFieldAppearance = 'outline';
 
   onSubmit() {
-    // do sth
+    console.log(this.loginForm.value);
   }
 }

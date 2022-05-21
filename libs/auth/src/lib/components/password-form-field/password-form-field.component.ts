@@ -1,4 +1,5 @@
 import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
+import { FormControl } from '@angular/forms'
 import { MatFormFieldAppearance } from '@angular/material/form-field'
 
 @Component({
@@ -9,9 +10,13 @@ import { MatFormFieldAppearance } from '@angular/material/form-field'
 export class PasswordFormFieldComponent {
   hide = false;
 
-  @Input() showError = false;
   @Input() name = 'password';
   @Input() errorText = '';
   @Input() label = 'Password';
   @Input() formAppearance: MatFormFieldAppearance = 'standard'
+  @Input() control!: FormControl;
+
+  get shouldShowError(): boolean {
+    return this.control.invalid;
+  }
 }
