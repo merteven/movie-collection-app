@@ -1,4 +1,9 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import {
+  Component,
+  ChangeDetectionStrategy,
+  Output,
+  EventEmitter,
+} from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatFormFieldAppearance } from '@angular/material/form-field';
 
@@ -14,6 +19,11 @@ const passwordMaxLength = 32;
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LoginFormComponent {
+  @Output() submitted = new EventEmitter<{
+    username: string;
+    password: string;
+  }>();
+
   loginForm = new FormGroup(
     {
       username: new FormControl('', [
@@ -47,6 +57,6 @@ export class LoginFormComponent {
   formAppearance: MatFormFieldAppearance = 'outline';
 
   onSubmit() {
-    console.log(this.loginForm.value);
+    this.submitted.emit(this.loginForm.value);
   }
 }

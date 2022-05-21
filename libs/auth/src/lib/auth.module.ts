@@ -8,20 +8,24 @@ import { MatInputModule } from '@angular/material/input';
 import { RouterModule } from '@angular/router';
 import { LoginFormComponent } from './components/login-form/login-form.component';
 import { PasswordFormFieldComponent } from './components/password-form-field/password-form-field.component';
-import { LoginPage } from './pages/login-page/login.page';
+import { LoginPageComponent } from './pages/login-page/login.page';
 
 @NgModule({
   imports: [
     CommonModule,
     RouterModule.forChild([
-      {path: 'login', pathMatch: 'full', component: LoginPage}
+      { path: 'login', pathMatch: 'full', component: LoginPageComponent },
     ]),
     MatFormFieldModule,
     MatIconModule,
     MatInputModule,
     MatButtonModule,
-    ReactiveFormsModule,
+    ReactiveFormsModule
   ],
-  declarations: [LoginFormComponent, PasswordFormFieldComponent, LoginPage],
+  declarations: [
+    LoginFormComponent,
+    PasswordFormFieldComponent,
+    LoginPageComponent,
+  ],
 })
 export class AuthModule {}
