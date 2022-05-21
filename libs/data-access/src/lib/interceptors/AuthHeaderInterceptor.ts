@@ -20,7 +20,7 @@ export class AuthHeaderInterceptor implements HttpInterceptor {
     next: HttpHandler
   ): Observable<HttpEvent<unknown>> {
     const clonedRequest = req.clone({
-      url: `${this.baseUrl}/${req.url}`,
+      url: `${this.baseUrl}${req.url}`,
       setHeaders: this.token ? { Authorization: `Bearer ${this.token}` } : {},
     });
     return next.handle(clonedRequest);

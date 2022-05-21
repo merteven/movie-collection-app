@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
+import { CoreModule } from '@movie-collection/core';
 
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -12,6 +13,7 @@ import { HeaderComponent } from './components/header.component';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    CoreModule,
     MatButtonModule,
     RouterModule.forRoot([
       {

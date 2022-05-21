@@ -8,14 +8,14 @@ import { BaseProvider } from './base.provider';
 })
 export class AuthProvider extends BaseProvider {
   login(username: string, password: string): Observable<UserDTO> {
-    return this.httpClient.post<UserDTO>('/login', {
+    return this.httpClient.post<UserDTO>('/auth/login', {
       username,
       password,
     });
   }
 
   register(username: string, password: string): Observable<UserDTO> {
-    return this.httpClient.post<UserDTO>('/register', {
+    return this.httpClient.post<UserDTO>('/auth/register', {
       username,
       password,
     });
