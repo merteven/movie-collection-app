@@ -6,7 +6,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { RouterModule } from '@angular/router';
-import { CoreModule } from '@movie-collection/core';
+import { Anonymous, CoreModule } from '@movie-collection/core';
 import { LoginFormComponent } from './components/login-form/login-form.component';
 import { PasswordFormFieldComponent } from './components/password-form-field/password-form-field.component';
 import { LoginPageComponent } from './pages/login-page/login.page';
@@ -16,7 +16,12 @@ import { LoginPageComponent } from './pages/login-page/login.page';
     CoreModule,
     CommonModule,
     RouterModule.forChild([
-      { path: 'login', pathMatch: 'full', component: LoginPageComponent },
+      {
+        path: 'login',
+        pathMatch: 'full',
+        component: LoginPageComponent,
+        canActivate: [Anonymous],
+      },
     ]),
     MatFormFieldModule,
     MatIconModule,
