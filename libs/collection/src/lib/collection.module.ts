@@ -10,6 +10,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatTableModule } from '@angular/material/table';
 import { RouterModule } from '@angular/router';
+import { Authenticated } from '@movie-collection/core';
 import { DataAccessModule } from '@movie-collection/data-access';
 import { CollectionTableComponent } from './components/collection-table/collection-table.component';
 import { HomePageComponent } from './pages/home/home.page';
@@ -33,6 +34,7 @@ import { CreateCollectionItemPageComponent } from './pages/create-collection-ite
       {
         path: 'create',
         pathMatch: 'full',
+        canActivate: [Authenticated],
         component: CreateCollectionPageComponent,
       },
       {
@@ -43,6 +45,7 @@ import { CreateCollectionItemPageComponent } from './pages/create-collection-ite
       {
         path: ':id/items/create',
         pathMatch: 'full',
+        canActivate: [Authenticated],
         component: CreateCollectionItemPageComponent,
       },
     ]),

@@ -9,8 +9,10 @@
       <mat-icon matSuffix>search</mat-icon>
     </mat-form-field>
     <div class="flex justify-between w-full px-6">
+      <!-- TODO Implement the page        -->
       <a
         *ngIf="isOwner$ | async"
+        class="invisible"
         mat-stroked-button
         color="primary"
         routerLink="name"
