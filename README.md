@@ -54,6 +54,7 @@ Contains services and components to handle collection and movie related operatio
 
 ## Notes
 
+- It expects the backend to be available at http://localhost:8080.
 - Dumb components do not have unit tests since they do not contain logic. They are usually tested visually with Storybook.
 - The aim was to write unit tests for all smart components and services. However, some didn't receive due to time
   constraints.
