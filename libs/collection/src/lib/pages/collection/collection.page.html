@@ -3,6 +3,11 @@
     <h2 *ngIf="collection$ | async as collection">
       Collection #{{collection.id}} - {{collection.name}}
     </h2>
+    <mat-form-field appearance="standard">
+      <mat-label>Search items by title</mat-label>
+      <input matInput (input)="onQueryChange($event)" />
+      <mat-icon matSuffix>search</mat-icon>
+    </mat-form-field>
     <div class="flex justify-between w-full px-6">
       <a
         *ngIf="isOwner$ | async"

@@ -10,6 +10,8 @@ import { AuthService } from '@movie-collection/core';
 import {
   BehaviorSubject,
   combineLatest,
+  debounceTime,
+  distinctUntilChanged,
   map,
   ReplaySubject,
   startWith,
@@ -51,6 +53,7 @@ export class CollectionPageComponent implements OnInit, OnDestroy {
   });
   total$ = new BehaviorSubject(0);
 
+  private query$ = new ReplaySubject<string>(1);
   private itemRemoved$ = new ReplaySubject<number>(1);
   private itemRemoveRequest$ = new ReplaySubject<number>(1);
 
@@ -78,16 +81,31 @@ export class CollectionPageComponent implements OnInit, OnDestroy {
     this.itemRemoveRequest$.next($event);
   }
 
+  onQueryChange($event: Event) {
+    const target = $event.target as HTMLInputElement;
+    this.query$.next(target.value);
+  }
+
   private getCollectionItems() {
     this.subscription.add(
       combineLatest([
         this.collection$,
         this.page$,
+        this.query$.pipe(
+          debounceTime(300),
+          distinctUntilChanged(),
+          startWith(null)
+        ),
         this.itemRemoved$.pipe(startWith(0)),
       ])
         .pipe(
-          switchMap(([collection, page]) =>
-            this.collectionItemService.get(collection.id, page.index, page.size)
+          switchMap(([collection, page, query]) =>
+            this.collectionItemService.get(
+              collection.id,
+              page.index,
+              page.size,
+              query
+            )
           )
         )
         .subscribe((page) => {
