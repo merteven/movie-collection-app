@@ -15,6 +15,7 @@ import { HomePageComponent } from './pages/home/home.page';
 import { CreateCollectionPageComponent } from './pages/create-collection/create-collection.page';
 import { CollectionCreateFormComponent } from './components/collection-create-form/collection-create-form.component';
 import { CollectionItemListComponent } from './components/collection-item-list/collection-item-list.component';
+import { CollectionPageComponent } from './pages/collection/collection.page';
 
 @NgModule({
   imports: [
@@ -30,6 +31,11 @@ import { CollectionItemListComponent } from './components/collection-item-list/c
         path: 'create',
         pathMatch: 'full',
         component: CreateCollectionPageComponent,
+      },
+      {
+        path: ':id',
+        pathMatch: 'full',
+        component: CollectionPageComponent,
       },
     ]),
     MatTableModule,
@@ -47,6 +53,7 @@ import { CollectionItemListComponent } from './components/collection-item-list/c
     CreateCollectionPageComponent,
     CollectionCreateFormComponent,
     CollectionItemListComponent,
+    CollectionPageComponent,
   ],
 })
 export class CollectionModule {}

@@ -5,6 +5,9 @@
     <p matLine>
       {{ item.overview }}
     </p>
+    <button *ngIf="isOwner" mat-icon-button (click)="itemRemoved.emit(item.id)">
+      <mat-icon>delete</mat-icon>
+    </button>
   </mat-list-item>
 </mat-list>
 <mat-paginator

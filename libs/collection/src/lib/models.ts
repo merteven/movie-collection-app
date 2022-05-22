@@ -1,13 +1,15 @@
 export interface Collection {
-  id: string;
+  id: number;
   name: string;
   username: string;
 }
 
-export interface CollectionPage {
-  content: Collection[];
+interface Page<T> {
+  content: T[];
   totalElements: number;
 }
+
+export type CollectionPage = Page<Collection>;
 
 export interface CollectionItem {
   id: number;
@@ -15,3 +17,5 @@ export interface CollectionItem {
   overview: string;
   posterUrl: string;
 }
+
+export type CollectionItemPage = Page<CollectionItem>;

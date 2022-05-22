@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { MovieDTO } from '../models/collection';
+import { MovieDTO, MoviePage } from '../models/collection';
 import { BaseProvider } from './base.provider';
 
 @Injectable({
@@ -23,8 +23,8 @@ export class CollectionItemProvider extends BaseProvider {
     page: number,
     size: number,
     query: string | null = null
-  ): Observable<MovieDTO[]> {
-    return this.httpClient.get<MovieDTO[]>(
+  ): Observable<MoviePage> {
+    return this.httpClient.get<MoviePage>(
       `/collections/${collectionId}/items`,
       { params: query ? { page, size, query } : { page, size } }
     );

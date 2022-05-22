@@ -1,0 +1,17 @@
+<div class="flex flex-col items-center justify-center h-full">
+  <div class="flex flex-col items-center justify-center w-1/2">
+    <h2 *ngIf="collection$ | async as collection">
+      Collection #{{collection.id}} - {{collection.name}}
+    </h2>
+    <mc-collection-item-list
+      *ngIf="page$ | async as page"
+      [collectionItems]="collectionItems$ | async"
+      [isOwner]="isOwner$ | async"
+      [pageIndex]="page.index"
+      [pageSize]="page.size"
+      [total]="total$ | async"
+      (pageChanged)="onPageChanged($event)"
+      (itemRemoved)="onItemRemoved($event)"
+    ></mc-collection-item-list>
+  </div>
+</div>

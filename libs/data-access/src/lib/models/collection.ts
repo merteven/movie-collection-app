@@ -1,5 +1,5 @@
 export interface CollectionDTO {
-  id: string;
+  id: number;
   name: string;
   username: string;
 }
@@ -13,5 +13,10 @@ export interface MovieDTO {
 
 export interface CollectionPage {
   content: CollectionDTO[];
+  totalElements: number;
+}
+
+export interface MoviePage {
+  content: MovieDTO[];
   totalElements: number;
 }
