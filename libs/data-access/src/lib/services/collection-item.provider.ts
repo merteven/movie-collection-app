@@ -18,9 +18,15 @@ export class CollectionItemProvider extends BaseProvider {
     );
   }
 
-  get(collectionId: number): Observable<MovieDTO[]> {
+  get(
+    collectionId: number,
+    page: number,
+    size: number,
+    query: string | null = null
+  ): Observable<MovieDTO[]> {
     return this.httpClient.get<MovieDTO[]>(
-      `/collections/${collectionId}/items`
+      `/collections/${collectionId}/items`,
+      { params: query ? { page, size, query } : { page, size } }
     );
   }
 
