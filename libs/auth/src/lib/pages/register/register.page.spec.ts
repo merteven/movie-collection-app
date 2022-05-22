@@ -7,21 +7,21 @@ import { AuthService } from '@movie-collection/core';
 import { of } from 'rxjs';
 import { AuthModule } from '../../auth.module';
 
-import { LoginPageComponent } from './login.page';
+import { RegisterPageComponent } from './register.page';
 
-describe('LoginPage', () => {
-  let component: LoginPageComponent;
-  let fixture: ComponentFixture<LoginPageComponent>;
+describe('RegisterPage', () => {
+  let component: RegisterPageComponent;
+  let fixture: ComponentFixture<RegisterPageComponent>;
   let router: Router;
 
   const username = 'username';
   const authService: Partial<AuthService> = {
-    login: jest.fn().mockReturnValue(of({ username: username })),
+    register: jest.fn().mockReturnValue(of({ username: username })),
   };
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [LoginPageComponent],
+      declarations: [RegisterPageComponent],
       imports: [
         AuthModule,
         NoopAnimationsModule,
@@ -33,7 +33,7 @@ describe('LoginPage', () => {
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(LoginPageComponent);
+    fixture = TestBed.createComponent(RegisterPageComponent);
     router = TestBed.inject(Router);
     component = fixture.componentInstance;
     fixture.detectChanges();
@@ -43,10 +43,10 @@ describe('LoginPage', () => {
     const navigateSpy = jest.spyOn(router, 'navigateByUrl');
 
     const password = 'password';
-    component.onLogin({ username, password });
+    component.onRegister({ username, password });
 
-    expect(authService.login).toBeCalled();
-    expect(authService.login).toBeCalledWith(username, password);
+    expect(authService.register).toBeCalled();
+    expect(authService.register).toBeCalledWith(username, password);
     expect(navigateSpy).toBeCalledWith('/');
   });
 });
