@@ -4,6 +4,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
+import { MatListModule } from '@angular/material/list';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatTableModule } from '@angular/material/table';
@@ -13,6 +14,7 @@ import { CollectionTableComponent } from './components/collection-table/collecti
 import { HomePageComponent } from './pages/home/home.page';
 import { CreateCollectionPageComponent } from './pages/create-collection/create-collection.page';
 import { CollectionCreateFormComponent } from './components/collection-create-form/collection-create-form.component';
+import { CollectionItemListComponent } from './components/collection-item-list/collection-item-list.component';
 
 @NgModule({
   imports: [
@@ -37,12 +39,14 @@ import { CollectionCreateFormComponent } from './components/collection-create-fo
     ReactiveFormsModule,
     MatInputModule,
     MatSlideToggleModule,
+    MatListModule,
   ],
   declarations: [
     CollectionTableComponent,
     HomePageComponent,
     CreateCollectionPageComponent,
     CollectionCreateFormComponent,
+    CollectionItemListComponent,
   ],
 })
 export class CollectionModule {}

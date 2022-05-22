@@ -20,4 +20,8 @@ export class CollectionService {
   getOwned(page: number, pageSize: number): Observable<CollectionPage> {
     return this.collectionProvider.getOwned(page, pageSize);
   }
+
+  getById(id: number): Observable<Collection> {
+    return this.collectionProvider.getById(id);
+  }
 }
