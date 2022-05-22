@@ -1,17 +1,22 @@
 <div class="flex flex-col items-center justify-center h-full">
   <div class="flex flex-col items-center justify-center w-1/2">
     <h2>Collections</h2>
-    <button
-      mat-stroked-button
-      color="primary"
-      class="!ml-auto"
-      (click)="onCreate()"
-    >
-      <mat-icon>add</mat-icon>Create
-    </button>
+    <div class="flex w-full justify-between">
+      <mat-slide-toggle
+        color="primary"
+        [checked]="showOwned"
+        (toggleChange)="onToggleChanged()"
+        >Show only my collections</mat-slide-toggle
+      >
+      <button mat-stroked-button color="primary" (click)="onCreate()">
+        <mat-icon>add</mat-icon>Create
+      </button>
+    </div>
     <mc-collection-table
       [collections]="collections"
       [total]="total"
+      [pageIndex]="pageIndex"
+      [pageSize]="pageSize"
       (pageChanged)="onPageChange($event)"
     ></mc-collection-table>
   </div>

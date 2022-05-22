@@ -19,6 +19,8 @@
 </table>
 <mat-paginator
   [pageSizeOptions]="[10, 5, 20]"
+  [pageIndex]="pageIndex"
+  [pageSize]="pageSize"
   [length]="total"
   (page)="pageChanged.emit($event)"
   showFirstLastButtons

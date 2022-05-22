@@ -18,14 +18,12 @@ export class HomePageComponent implements OnInit, OnDestroy {
 
   collections: Collection[] = [];
   total = 0;
+  showOwned = false;
+  pageIndex = 0;
+  pageSize = 10;
 
   ngOnInit(): void {
-    this.subscriptions.add(
-      this.collectionService.get(0, 10).subscribe((page) => {
-        this.collections = page.content;
-        this.total = page.totalElements;
-      })
-    );
+    this.getPaginatedCollections();
   }
 
   ngOnDestroy(): void {
@@ -33,17 +31,40 @@ export class HomePageComponent implements OnInit, OnDestroy {
   }
 
   onPageChange(event: PageEvent) {
-    this.subscriptions.add(
-      this.collectionService
-        .get(event.pageIndex, event.pageSize)
-        .subscribe((page) => {
-          this.collections = page.content;
-          this.total = page.totalElements;
-        })
-    );
+    this.pageIndex = event.pageIndex;
+    this.pageSize = event.pageSize;
+    this.getPaginatedCollections();
   }
 
   onCreate() {
     this.router.navigateByUrl('/collections/create');
+  }
+
+  onToggleChanged() {
+    this.showOwned = !this.showOwned;
+    this.pageIndex = 0;
+    this.getPaginatedCollections();
+  }
+
+  private getPaginatedCollections() {
+    if (this.showOwned) {
+      this.subscriptions.add(
+        this.collectionService
+          .getOwned(this.pageIndex, this.pageSize)
+          .subscribe((page) => {
+            this.collections = page.content;
+            this.total = page.totalElements;
+          })
+      );
+    } else {
+      this.subscriptions.add(
+        this.collectionService
+          .get(this.pageIndex, this.pageSize)
+          .subscribe((page) => {
+            this.collections = page.content;
+            this.total = page.totalElements;
+          })
+      );
+    }
   }
 }

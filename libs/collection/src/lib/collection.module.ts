@@ -5,6 +5,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatTableModule } from '@angular/material/table';
 import { RouterModule } from '@angular/router';
 import { DataAccessModule } from '@movie-collection/data-access';
@@ -35,6 +36,7 @@ import { CollectionCreateFormComponent } from './components/collection-create-fo
     MatIconModule,
     ReactiveFormsModule,
     MatInputModule,
+    MatSlideToggleModule,
   ],
   declarations: [
     CollectionTableComponent,
