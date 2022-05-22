@@ -25,6 +25,13 @@ import { HeaderComponent } from './components/header.component';
           ),
       },
       {
+        path: 'collections',
+        loadChildren: () =>
+          import('@movie-collection/collection').then(
+            (m) => m.CollectionModule
+          ),
+      },
+      {
         path: 'auth',
         loadChildren: () =>
           import('@movie-collection/auth').then((m) => m.AuthModule),

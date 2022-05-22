@@ -9,6 +9,10 @@ import { Collection } from '../models';
 export class CollectionService {
   constructor(private collectionProvider: CollectionProvider) {}
 
+  create(name: string): Observable<Collection> {
+    return this.collectionProvider.create(name);
+  }
+
   get(page: number, pageSize: number): Observable<Collection[]> {
     return this.collectionProvider.get(page, pageSize);
   }

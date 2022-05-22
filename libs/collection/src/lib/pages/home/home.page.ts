@@ -1,5 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
+import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Collection } from '../../models';
 import { CollectionService } from '../../services/collection.service';
@@ -10,7 +11,10 @@ import { CollectionService } from '../../services/collection.service';
 })
 export class HomePageComponent implements OnInit, OnDestroy {
   private subscriptions: Subscription = new Subscription();
-  constructor(private collectionService: CollectionService) {}
+  constructor(
+    private collectionService: CollectionService,
+    private router: Router
+  ) {}
 
   collections: Collection[] = [];
 
@@ -34,5 +38,9 @@ export class HomePageComponent implements OnInit, OnDestroy {
           this.collections = collections;
         })
     );
+  }
+
+  onCreate() {
+    this.router.navigateByUrl('/collections/create');
   }
 }

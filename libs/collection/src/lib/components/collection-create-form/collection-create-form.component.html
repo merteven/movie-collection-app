@@ -1,0 +1,17 @@
+<form [formGroup]="createForm" (ngSubmit)="onSubmit()">
+  <div class="flex flex-col gap-3">
+    <mat-form-field appearance="outline">
+      <mat-label>Name</mat-label>
+      <input matInput [formControlName]="fieldName" [name]="fieldName" />
+      <mat-error *ngIf="shouldShowNameError">{{ fieldErrorText }}</mat-error>
+    </mat-form-field>
+    <button
+      mat-stroked-button
+      color="primary"
+      type="submit"
+      [disabled]="createForm.invalid"
+    >
+      Create<mat-icon>add</mat-icon>
+    </button>
+  </div>
+</form>

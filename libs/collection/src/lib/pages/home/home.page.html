@@ -1,7 +1,12 @@
 <div class="flex flex-col items-center justify-center h-full">
   <div class="flex flex-col items-center justify-center w-1/2">
     <h2>Collections</h2>
-    <button mat-stroked-button color="primary" class="!ml-auto">
+    <button
+      mat-stroked-button
+      color="primary"
+      class="!ml-auto"
+      (click)="onCreate()"
+    >
       <mat-icon>add</mat-icon>Create
     </button>
     <mc-collection-table
