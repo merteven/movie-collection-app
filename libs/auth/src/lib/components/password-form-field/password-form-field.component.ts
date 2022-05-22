@@ -1,6 +1,6 @@
 import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
-import { FormControl } from '@angular/forms'
-import { MatFormFieldAppearance } from '@angular/material/form-field'
+import { FormControl } from '@angular/forms';
+import { MatFormFieldAppearance } from '@angular/material/form-field';
 
 @Component({
   selector: 'mc-password-input',
@@ -8,12 +8,12 @@ import { MatFormFieldAppearance } from '@angular/material/form-field'
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PasswordFormFieldComponent {
-  hide = false;
+  hide = true;
 
   @Input() name = 'password';
   @Input() errorText = '';
   @Input() label = 'Password';
-  @Input() formAppearance: MatFormFieldAppearance = 'standard'
+  @Input() formAppearance: MatFormFieldAppearance = 'standard';
   @Input() control!: FormControl;
 
   get shouldShowError(): boolean {

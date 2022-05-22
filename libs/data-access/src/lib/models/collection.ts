@@ -10,3 +10,8 @@ export interface MovieDTO {
   overview: string;
   posterUrl: string;
 }
+
+export interface CollectionPage {
+  content: CollectionDTO[];
+  totalElements: number;
+}

@@ -3,3 +3,8 @@ export interface Collection {
   name: string;
   username: string;
 }
+
+export interface CollectionPage {
+  content: Collection[];
+  totalElements: number;
+}

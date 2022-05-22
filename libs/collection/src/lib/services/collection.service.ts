@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { CollectionProvider } from '@movie-collection/data-access';
 import { Observable } from 'rxjs';
-import { Collection } from '../models';
+import { Collection, CollectionPage } from '../models';
 
 @Injectable({
   providedIn: 'root',
@@ -13,11 +13,11 @@ export class CollectionService {
     return this.collectionProvider.create(name);
   }
 
-  get(page: number, pageSize: number): Observable<Collection[]> {
+  get(page: number, pageSize: number): Observable<CollectionPage> {
     return this.collectionProvider.get(page, pageSize);
   }
 
-  getOwned(page: number, pageSize: number): Observable<Collection[]> {
+  getOwned(page: number, pageSize: number): Observable<CollectionPage> {
     return this.collectionProvider.getOwned(page, pageSize);
   }
 }

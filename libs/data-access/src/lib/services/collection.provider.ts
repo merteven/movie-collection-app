@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { CollectionDTO } from '../models/collection';
+import { CollectionDTO, CollectionPage } from '../models/collection';
 import { BaseProvider } from './base.provider';
 
 @Injectable({
@@ -15,14 +15,14 @@ export class CollectionProvider extends BaseProvider {
     return this.httpClient.get<CollectionDTO>(`/collections/${id}`);
   }
 
-  get(page: number, size: number): Observable<CollectionDTO[]> {
-    return this.httpClient.get<CollectionDTO[]>('/collections', {
+  get(page: number, size: number): Observable<CollectionPage> {
+    return this.httpClient.get<CollectionPage>('/collections', {
       params: { page, size },
     });
   }
 
-  getOwned(page: number, size: number): Observable<CollectionDTO[]> {
-    return this.httpClient.get<CollectionDTO[]>('/collections/owned', {
+  getOwned(page: number, size: number): Observable<CollectionPage> {
+    return this.httpClient.get<CollectionPage>('/collections/owned', {
       params: { page, size },
     });
   }

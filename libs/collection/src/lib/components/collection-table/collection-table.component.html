@@ -19,6 +19,7 @@
 </table>
 <mat-paginator
   [pageSizeOptions]="[10, 5, 20]"
+  [length]="total"
   (page)="pageChanged.emit($event)"
   showFirstLastButtons
   aria-label="Select page of collections"

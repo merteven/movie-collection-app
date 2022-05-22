@@ -22,6 +22,7 @@ import { Collection } from '../../models';
 })
 export class CollectionTableComponent {
   @Input() collections: Collection[] = [];
+  @Input() total = 0;
   @Output() pageChanged = new EventEmitter<PageEvent>();
 
   readonly displayedColumns: string[] = ['id', 'name', 'username'];

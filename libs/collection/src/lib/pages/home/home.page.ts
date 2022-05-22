@@ -17,11 +17,13 @@ export class HomePageComponent implements OnInit, OnDestroy {
   ) {}
 
   collections: Collection[] = [];
+  total = 0;
 
   ngOnInit(): void {
     this.subscriptions.add(
-      this.collectionService.get(0, 10).subscribe((collections) => {
-        this.collections = collections;
+      this.collectionService.get(0, 10).subscribe((page) => {
+        this.collections = page.content;
+        this.total = page.totalElements;
       })
     );
   }
@@ -34,8 +36,9 @@ export class HomePageComponent implements OnInit, OnDestroy {
     this.subscriptions.add(
       this.collectionService
         .get(event.pageIndex, event.pageSize)
-        .subscribe((collections) => {
-          this.collections = collections;
+        .subscribe((page) => {
+          this.collections = page.content;
+          this.total = page.totalElements;
         })
     );
   }
