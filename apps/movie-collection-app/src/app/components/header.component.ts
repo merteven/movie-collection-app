@@ -13,6 +13,10 @@ import { User } from '@movie-collection/core';
       class="flex justify-between items-center bg-blue-400 text-white px-4 h-16"
     >
       <h1 class="!m-0">Movie Collection App</h1>
+      <div class="flex gap-2">
+        Links:
+        <a class="underline" routerLink="/">Home</a>
+      </div>
       <div class="flex gap-2 items-center">
         <ng-container
           *ngIf="user === null; then userMissing; else userExists"

@@ -1,7 +1,11 @@
 <table class="w-full" mat-table [dataSource]="collections">
   <ng-container matColumnDef="id">
     <th mat-header-cell *matHeaderCellDef>ID</th>
-    <td mat-cell *matCellDef="let element">{{ element.id }}</td>
+    <td mat-cell *matCellDef="let element">
+      <a class="underline" [routerLink]="'/collections/' + element.id">{{
+        element.id
+      }}</a>
+    </td>
   </ng-container>
 
   <ng-container matColumnDef="name">
