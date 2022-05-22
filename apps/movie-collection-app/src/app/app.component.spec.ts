@@ -1,31 +1,52 @@
-import { TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { Router } from '@angular/router';
+import { RouterTestingModule } from '@angular/router/testing';
+
 import { AppComponent } from './app.component';
+import { AppModule } from './app.module';
 
-describe('AppComponent', () => {
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [AppComponent],
-    }).compileComponents();
+function setup() {
+  TestBed.configureTestingModule({
+    imports: [AppModule, RouterTestingModule],
+  }).compileComponents();
+
+  let rootFixture: ComponentFixture<AppComponent>;
+  const initializeRootFixture = () => {
+    if (rootFixture == null) {
+      rootFixture = TestBed.createComponent(AppComponent);
+    }
+  };
+
+  return {
+    get router() {
+      initializeRootFixture();
+
+      return TestBed.inject(Router);
+    },
+    run<TResult>(task: () => TResult) {
+      initializeRootFixture();
+
+      return rootFixture.ngZone == null ? task() : rootFixture.ngZone.run(task);
+    },
+  };
+}
+
+describe('Applicaton smoke test', () => {
+  it('the application boots up', () => {
+    const bootApplication = () => {
+      const { router, run } = setup();
+
+      run(() => router.initialNavigation());
+    };
+
+    expect(bootApplication).not.toThrow();
   });
 
-  it('should create the app', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app).toBeTruthy();
-  });
+  it('navigation works', async () => {
+    const { router, run } = setup();
 
-  it(`should have as title 'movie-collection-app'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('movie-collection-app');
-  });
+    const canNavigate = await run(() => router.navigateByUrl('/'));
 
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain(
-      'Welcome movie-collection-app'
-    );
+    expect(canNavigate).toBe(true);
   });
 });

@@ -24,9 +24,9 @@ import { User } from '@movie-collection/core';
       </div>
     </header>
     <ng-template #userMissing>
-      <a routerLink="auth/login">Login</a>
+      <a routerLink="/auth/login">Login</a>
       <span>/</span>
-      <a routerLink="auth/register">Register</a>
+      <a routerLink="/auth/register">Register</a>
     </ng-template>
     <ng-template #userExists>
       <span>Hello, {{ user?.username }}</span>
