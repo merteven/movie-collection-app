@@ -9,12 +9,8 @@ import { CollectionItem, CollectionItemPage } from '../models';
 export class CollectionItemService {
   constructor(private collectionItemProvider: CollectionItemProvider) {}
 
-  create(
-    collectionId: number,
-    movieId: number,
-    title: string
-  ): Observable<CollectionItem> {
-    return this.collectionItemProvider.create(collectionId, movieId, title);
+  create(collectionId: number, movieId: number): Observable<CollectionItem> {
+    return this.collectionItemProvider.create(collectionId, movieId);
   }
 
   get(

@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
@@ -16,6 +17,8 @@ import { CreateCollectionPageComponent } from './pages/create-collection/create-
 import { CollectionCreateFormComponent } from './components/collection-create-form/collection-create-form.component';
 import { CollectionItemListComponent } from './components/collection-item-list/collection-item-list.component';
 import { CollectionPageComponent } from './pages/collection/collection.page';
+import { CollectionItemCreateFormComponent } from './components/collection-item-create-form/collection-item-create-form.component';
+import { CreateCollectionItemPageComponent } from './pages/create-collection-item-page-component/create-collection-item.page';
 
 @NgModule({
   imports: [
@@ -37,6 +40,11 @@ import { CollectionPageComponent } from './pages/collection/collection.page';
         pathMatch: 'full',
         component: CollectionPageComponent,
       },
+      {
+        path: ':id/items/create',
+        pathMatch: 'full',
+        component: CreateCollectionItemPageComponent,
+      },
     ]),
     MatTableModule,
     MatPaginatorModule,
@@ -46,6 +54,7 @@ import { CollectionPageComponent } from './pages/collection/collection.page';
     MatInputModule,
     MatSlideToggleModule,
     MatListModule,
+    MatAutocompleteModule,
   ],
   declarations: [
     CollectionTableComponent,
@@ -54,6 +63,8 @@ import { CollectionPageComponent } from './pages/collection/collection.page';
     CollectionCreateFormComponent,
     CollectionItemListComponent,
     CollectionPageComponent,
+    CollectionItemCreateFormComponent,
+    CreateCollectionItemPageComponent,
   ],
 })
 export class CollectionModule {}

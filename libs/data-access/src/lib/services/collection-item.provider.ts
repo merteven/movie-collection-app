@@ -7,14 +7,10 @@ import { BaseProvider } from './base.provider';
   providedIn: 'root',
 })
 export class CollectionItemProvider extends BaseProvider {
-  create(
-    collectionId: number,
-    movieId: number,
-    title: string
-  ): Observable<MovieDTO> {
+  create(collectionId: number, movieId: number): Observable<MovieDTO> {
     return this.httpClient.post<MovieDTO>(
       `/collections/${collectionId}/items`,
-      { movieId, title }
+      { movieId }
     );
   }
 

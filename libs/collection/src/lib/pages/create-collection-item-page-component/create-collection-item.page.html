@@ -1,0 +1,11 @@
+<div class="flex flex-col items-center justify-center h-full">
+  <div class="flex flex-col items-center justify-center w-1/2">
+    <h2>Create new Collection Item</h2>
+    <mc-collection-item-create-form
+      class="w-full"
+      [options]="options"
+      (inputChanged)="onInputChanged($event)"
+      (submitted)="onSubmitted($event)"
+    ></mc-collection-item-create-form>
+  </div>
+</div>

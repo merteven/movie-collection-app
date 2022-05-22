@@ -1,0 +1,56 @@
+<div class="flex flex-col">
+  <mat-autocomplete
+    #auto="matAutocomplete"
+    (optionSelected)="onOptionSelected($event)"
+    [displayWith]="extractLabel"
+  >
+    <mat-option *ngFor="let option of options" [value]="option">
+      <img
+        class="w-4 h-auto"
+        aria-hidden="true"
+        [src]="option.posterUrl"
+        [alt]="option.title"
+      />
+      <span>{{ option.title }}</span> |
+      <small>{{ option.overview }}</small>
+    </mat-option>
+  </mat-autocomplete>
+  <mat-form-field appearance="outline">
+    <mat-label>Movie Search</mat-label>
+    <input
+      placeholder="Search by entering the title"
+      matInput
+      (input)="onInput($event)"
+      [matAutocomplete]="auto"
+      [disabled]="showItemSummary"
+      [value]="inputValue"
+    />
+  </mat-form-field>
+
+  <div *ngIf="showItemSummary">
+    <div class="flex gap-2 items-center">
+      <img
+        class="w-16 h-auto"
+        [src]="selectedItem?.posterUrl"
+        [alt]="selectedItem?.title"
+      />
+      <div class="flex flex-col">
+        <h3>{{ selectedItem?.title }}</h3>
+        <small>
+          {{ selectedItem?.overview }}
+        </small>
+      </div>
+      <button mat-icon-button (click)="onClear()">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </div>
+    <button
+      class="!my-2"
+      mat-stroked-button
+      color="primary"
+      (click)="onSubmit()"
+    >
+      Create<mat-icon>add</mat-icon>
+    </button>
+  </div>
+</div>

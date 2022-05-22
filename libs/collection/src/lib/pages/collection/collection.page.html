@@ -3,7 +3,26 @@
     <h2 *ngIf="collection$ | async as collection">
       Collection #{{collection.id}} - {{collection.name}}
     </h2>
+    <div class="flex justify-between w-full px-6">
+      <a
+        *ngIf="isOwner$ | async"
+        mat-stroked-button
+        color="primary"
+        routerLink="name"
+      >
+        Edit name<mat-icon class="text-sm">edit</mat-icon>
+      </a>
+      <a
+        *ngIf="isOwner$ | async"
+        mat-stroked-button
+        color="primary"
+        routerLink="items/create"
+      >
+        Create new item<mat-icon class="text-sm">add</mat-icon>
+      </a>
+    </div>
     <mc-collection-item-list
+      class="w-full"
       *ngIf="page$ | async as page"
       [collectionItems]="collectionItems$ | async"
       [isOwner]="isOwner$ | async"
