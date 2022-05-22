@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
@@ -47,24 +47,19 @@ export class HomePageComponent implements OnInit, OnDestroy {
   }
 
   private getPaginatedCollections() {
+    this.subscriptions.add(
+      this.getCollectionObservable().subscribe((page) => {
+        this.collections = page.content;
+        this.total = page.totalElements;
+      })
+    );
+  }
+
+  private getCollectionObservable() {
     if (this.showOwned) {
-      this.subscriptions.add(
-        this.collectionService
-          .getOwned(this.pageIndex, this.pageSize)
-          .subscribe((page) => {
-            this.collections = page.content;
-            this.total = page.totalElements;
-          })
-      );
+      return this.collectionService.getOwned(this.pageIndex, this.pageSize);
     } else {
-      this.subscriptions.add(
-        this.collectionService
-          .get(this.pageIndex, this.pageSize)
-          .subscribe((page) => {
-            this.collections = page.content;
-            this.total = page.totalElements;
-          })
-      );
+      return this.collectionService.get(this.pageIndex, this.pageSize);
     }
   }
 }
